@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BareLink", "BareLink.csproj", "{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC698E2A-2E7C-4411-BBF0-E20FA9B2044F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5A9CC30-3149-4E27-AAF4-FAFA0E9A5673}
+	EndGlobalSection
+EndGlobal
