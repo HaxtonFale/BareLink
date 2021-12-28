@@ -32,4 +32,11 @@ jobs:
       run: msbuild ./BareLink.Test/BareLink.Test.csproj /t:Build /p:Configuration=Release
       
     - name: Run Tests
-      run: vstest.console.exe ./BareLink.Test/bin/Release/BareLink.Test.dll
+      run: vstest.console.exe BareLink.Test/bin/Release/BareLink.Test.dll /Logger:trx
+
+    - name: Test Reporter
+      uses: dorny/test-reporter@v1.5.0
+      with:
+        reporter: dotnet-trx
+        name: Unit Tests
+        path: '*.trx'
