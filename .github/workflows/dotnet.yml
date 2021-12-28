@@ -13,15 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-    - name: Restore
-      run: nuget restore .\BareLink.sln
-    - name: Install MSBuild
-      uses: microsoft/setup-msbuild@v1.1
+    - name: Setup .NET Core SDK 5.0.x
+      uses: actions/setup-dotnet@v1
       with:
-        msbuild-architecture: x64
+        dotnet-version: '5.0.x'
+
+    - name: Install dependencies
+      run: nuget restore ./BareLink.sln
+
     - name: Build
-      run: msbuild .\BareLink.sln -t:rebuild -verbosity:diag -property:Configuration=Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: msbuild ./BareLink/BareLink.csproj /t:PackageForAndroid /p:Configuration=Release
