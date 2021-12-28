@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using BareLink.Models;
 using Newtonsoft.Json;
 using SQLite;
@@ -10,16 +11,16 @@ namespace BareLink.Services
 {
     public class DatabaseFiltersService : IFiltersService
     {
-        private SQLiteConnection _database;
+        private SQLiteAsyncConnection _database;
 
-        private SQLiteConnection DatabaseConnection
+        private SQLiteAsyncConnection DatabaseConnection
         {
             get
             {
                 if (_database != null) return _database;
                 File.Delete(DbPath);
-                _database = new SQLiteConnection(DbPath);
-                Initialise();
+                _database = new SQLiteAsyncConnection(DbPath);
+                _ = Initialise();
 
                 return _database;
             }
@@ -27,50 +28,50 @@ namespace BareLink.Services
         private static string DbPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "filters.db3");
 
-        public List<Filter> GetFilters()
+        public Task<List<Filter>> GetFiltersAsync()
         {
-            return DatabaseConnection.Table<Filter>().ToList();
+            return DatabaseConnection.Table<Filter>().ToListAsync();
         }
 
-        public List<Filter> GetActiveFilters()
+        public Task<List<Filter>> GetActiveFiltersAsync()
         {
-            return DatabaseConnection.Table<Filter>().Where(f => f.Active).ToList();
+            return DatabaseConnection.Table<Filter>().Where(f => f.Active).ToListAsync();
         }
 
-        public Filter GetFilter(int filterId)
+        public Task<Filter> GetFilterAsync(int filterId)
         {
-            return DatabaseConnection.Table<Filter>().FirstOrDefault(f => f.Id == filterId);
+            return DatabaseConnection.Table<Filter>().FirstOrDefaultAsync(f => f.Id == filterId);
         }
 
-        public int SaveFilter(Filter filter)
+        public Task<int> SaveFilterAsync(Filter filter)
         {
-            return filter.Id == 0 ? DatabaseConnection.Insert(filter) : DatabaseConnection.Update(filter);
+            return filter.Id == 0 ? DatabaseConnection.InsertAsync(filter) : DatabaseConnection.UpdateAsync(filter);
         }
 
-        public void ImportJson(string importJson)
+        public Task<int> ImportJsonAsync(string importJson)
         {
             var import = JsonConvert.DeserializeObject<Filter[]>(importJson);
-            if (import != null)
-                _database.InsertAll(import);
+            if (import == null) return new Task<int>(() => 0);
+            return _database.InsertAllAsync(import);
         }
 
-        public string ExportJson()
+        public async Task<string> ExportJsonAsync()
         {
-            var filters = GetFilters();
+            var filters = await GetFiltersAsync();
             return JsonConvert.SerializeObject(filters);
         }
 
-        private void Initialise()
+        private async Task Initialise()
         {
             if (_database == null) return;
-            var result = _database.CreateTable<Filter>();
+            var result = await _database.CreateTableAsync<Filter>();
             if (result != CreateTableResult.Created) return;
             using var resource = Assembly.GetExecutingAssembly()
-                .GetManifestResourceStream("BareLink.defaultFilters.json");
+                .GetManifestResourceStream("BareLink.Models.filters.default.json");
             if (resource == null) return;
             using var reader = new StreamReader(resource);
-            var filters = reader.ReadToEnd();
-            ImportJson(filters);
+            var filters = await reader.ReadToEndAsync();
+            await ImportJsonAsync(filters);
         }
     }
 }

@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using BareLink.Models;
 
 namespace BareLink.Services
 {
     public interface IFiltersService
     {
-        List<Filter> GetFilters();
-        List<Filter> GetActiveFilters();
-        Filter GetFilter(int filterId);
-        int SaveFilter(Filter filter);
-        void ImportJson(string importJson);
-        string ExportJson();
+        Task<List<Filter>> GetFiltersAsync();
+        Task<List<Filter>> GetActiveFiltersAsync();
+        Task<Filter> GetFilterAsync(int filterId);
+        Task<int> SaveFilterAsync(Filter filter);
+        Task<int> ImportJsonAsync(string importJson);
+        Task<string> ExportJsonAsync();
     }
 }

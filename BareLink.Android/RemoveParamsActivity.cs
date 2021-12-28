@@ -7,7 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Application = Android.App.Application;
 
-namespace BareLink
+namespace BareLink.Droid
 {
     [Activity(Label = "RemoveParamsActivity", Theme = "@android:style/Theme.NoDisplay")]
     [IntentFilter(new []{Intent.ActionSend}, Categories = new[] { Intent.CategoryDefault }, DataMimeType = "text/*", Label = "Remove GET Params")]
@@ -20,13 +20,13 @@ namespace BareLink
             _filtersService = DependencyService.Get<IFiltersService>();
         }
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             if (!(Intent is {Action: Intent.ActionSend})) return;
             var text = Intent.Extras?.GetString(Intent.ExtraText);
             if (text == null) return;
-            var filters = _filtersService.GetActiveFilters();
+            var filters = await _filtersService.GetActiveFiltersAsync();
             foreach (var filter in filters)
             {
                 if (!filter.TryMatch(text, out var filteredResult)) continue;

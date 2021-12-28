@@ -5,12 +5,13 @@ namespace BareLink
 {
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<DatabaseFiltersService>();
-            MainPage = new MainPage();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()
