@@ -29,7 +29,7 @@ jobs:
       run: msbuild ./BareLink.sln /t:Build /p:Configuration=Release
       
     - name: Run Tests
-      run: vstest.console.exe BareLink.Test/bin/Release/BareLink.Test.dll /Logger:trx
+      run: vstest.console.exe BareLink.Test/bin/Release/netcoreapp3.1/BareLink.Test.dll /Logger:trx
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.5.0
