@@ -39,4 +39,4 @@ jobs:
       with:
         reporter: dotnet-trx
         name: Unit Tests
-        path: '*.trx'
+        path: 'TestResults/*.trx'
