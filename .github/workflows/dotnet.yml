@@ -14,29 +14,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1.1
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
       with:
-        msbuild-architecture: x64
-
-    - name: Setup VSTest Path
-      uses: darenm/Setup-VSTest@v1
+        dotnet-version: 6.0.x
 
     - name: Install dependencies
-      run: nuget restore ./BareLink.sln
+      run: dotnet restore
 
     - name: Build App
-      run: msbuild ./BareLink/BareLink.csproj /t:PackageForAndroid /p:Configuration=Release
-      
-    - name: Build Tests
-      run: msbuild ./BareLink.Test/BareLink.Test.csproj /t:Build /p:Configuration=Release
+      run: dotnet build --no-restore
       
     - name: Run Tests
-      run: vstest.console.exe BareLink.Test/bin/Release/BareLink.Test.dll /Logger:trx
+      run: dotnet test --no-build --logger trx --output .
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.5.0
       with:
         reporter: dotnet-trx
         name: Unit Tests
-        path: 'TestResults/*.trx'
+        path: '*.trx'

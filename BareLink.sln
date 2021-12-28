@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BareLink.Test", "BareLink.Test\BareLink.Test.csproj", "{0B881F1F-0C39-43D6-B4D8-D1408316099C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BareLink.Test", "BareLink.Test\BareLink.Test.csproj", "{0B881F1F-0C39-43D6-B4D8-D1408316099C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BareLink.Android", "BareLink.Android\BareLink.Android.csproj", "{1C861452-101F-418A-96A2-AFBDC96A0C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BareLink", "BareLink\BareLink.csproj", "{D45A602E-3804-4BC0-9BE9-3187E60AC37B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BareLink", "BareLink\BareLink.csproj", "{D45A602E-3804-4BC0-9BE9-3187E60AC37B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7D8591A-27FA-4B70-90D5-BF62F9DB9183}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
