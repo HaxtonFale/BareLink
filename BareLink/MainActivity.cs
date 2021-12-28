@@ -16,7 +16,7 @@ namespace BareLink
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            
             SetContentView(Resource.Layout.activity_main);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -28,7 +28,7 @@ namespace BareLink
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            MenuInflater?.Inflate(Resource.Menu.menu_main, menu);
             return true;
         }
 
@@ -41,14 +41,12 @@ namespace BareLink
         private void FabOnClick(object sender, EventArgs eventArgs)
         {
             var view = (View)sender;
-            Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
+            Snackbar.Make(view, "Replace with your own action", BaseTransientBottomBar.LengthLong)
                 .SetAction("Action", (View.IOnClickListener)null).Show();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
