@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using BareLink.Models;
+using NUnit.Framework;
 // ReSharper disable StringLiteralTypo
 
 namespace BareLink.Test
