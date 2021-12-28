@@ -1,4 +1,4 @@
-name: .NET
+name: Build & Test
 
 on:
   push:
@@ -13,13 +13,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+    - name: Restore
+      run: nuget restore .\BareLink.sln
+    - name: Install MSBuild
+      uses: microsoft/setup-msbuild@v1.1
       with:
-        dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore
+        msbuild-architecture: x64
     - name: Build
-      run: dotnet build --no-restore
+      run: msbuild .\BareLink.sln -t:rebuild -verbosity:diag -property:Configuration=Release
     - name: Test
       run: dotnet test --no-build --verbosity normal
