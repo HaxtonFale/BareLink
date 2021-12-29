@@ -20,6 +20,7 @@ namespace BareLink.ViewModels
             CancelCommand = new Command(OnCancel);
             PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
+            Title = "New Filter";
         }
 
         private bool ValidateSave()
@@ -63,6 +64,7 @@ namespace BareLink.ViewModels
                 Description = filter.Description;
                 Pattern = filter.Pattern;
                 _active = filter.Active;
+                Title = "Edit: " + Name;
             }
             catch (Exception)
             {

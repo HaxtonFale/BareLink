@@ -10,7 +10,7 @@
   <ContentPage.ToolbarItems>
     <ToolbarItem Command="{Binding AddFilterCommand}" x:DataType="local:FiltersViewModel">
       <ToolbarItem.IconImageSource>
-        <FontImageSource Glyph="&#xe145;" />
+        <FontImageSource FontFamily="Material" Glyph="&#xe145;" />
       </ToolbarItem.IconImageSource>
     </ToolbarItem>
   </ContentPage.ToolbarItems>

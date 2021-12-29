@@ -68,6 +68,7 @@ namespace BareLink.ViewModels
                 Description = filter.Description;
                 Pattern = filter.Pattern;
                 Active = filter.Active;
+                Title = "Details: " + Name;
             }
             catch (Exception)
             {

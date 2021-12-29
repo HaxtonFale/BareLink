@@ -21,6 +21,7 @@ namespace BareLink.ViewModels
         public SettingsViewModel(SettingsPage settingsPage)
         {
             _settingsPage = settingsPage;
+            Title = "Settings";
             ReseedDatabaseCommand = new Command(ExecuteReseedDatabaseCommand);
 
             if (Preferences.ContainsKey(AppThemePropertyName))

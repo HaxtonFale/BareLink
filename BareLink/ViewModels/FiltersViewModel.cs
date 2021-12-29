@@ -18,7 +18,7 @@ namespace BareLink.ViewModels
 
         public FiltersViewModel()
         {
-            Title = "Browse";
+            Title = "Filters";
             Filters = new ObservableCollection<Filter>();
             LoadFiltersCommand = new Command(ExecuteLoadItemsCommand);
 
