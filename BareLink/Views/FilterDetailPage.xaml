@@ -7,12 +7,12 @@
   <ContentPage.ToolbarItems>
     <ToolbarItem Command="{Binding EditFilterCommand}">
       <ToolbarItem.IconImageSource>
-        <FontImageSource FontFamily="Material"  Glyph="&#xe3c9;" />
+        <FontImageSource Glyph="&#xe3c9;" />
       </ToolbarItem.IconImageSource>
     </ToolbarItem>
     <ToolbarItem Command="{Binding DeleteFilterCommand}">
       <ToolbarItem.IconImageSource>
-        <FontImageSource FontFamily="Material" Glyph="&#xe872;" />
+        <FontImageSource Glyph="&#xe872;" />
       </ToolbarItem.IconImageSource>
     </ToolbarItem>
   </ContentPage.ToolbarItems>
