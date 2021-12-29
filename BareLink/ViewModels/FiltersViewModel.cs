@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using BareLink.Models;
 using BareLink.Views;
 using Xamarin.Forms;
@@ -69,16 +68,16 @@ namespace BareLink.ViewModels
 
         private async void OnAddItem(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewFilterPage));
+            await Shell.Current.GoToAsync(nameof(EditFilterPage));
         }
 
-        private async void OnItemSelected(Filter item)
+        private async void OnItemSelected(Filter filter)
         {
-            if (item == null)
+            if (filter == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(FilterDetailPage)}?{nameof(FilterDetailViewModel.FilterId)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(FilterDetailPage)}?{nameof(FilterDetailViewModel.FilterId)}={filter.Id}");
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using BareLink.ViewModels;
-using Xamarin.Forms;
 
 namespace BareLink.Views
 {
-    public partial class FiltersPage : ContentPage
+    public partial class FiltersPage
     {
-        FiltersViewModel _viewModel;
+        private readonly FiltersViewModel _viewModel;
 
         public FiltersPage()
         {

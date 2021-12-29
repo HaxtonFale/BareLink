@@ -51,8 +51,8 @@
     <Compile Update="Views\FiltersPage.xaml.cs">
       <DependentUpon>FiltersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\NewFilterPage.xaml.cs">
-      <DependentUpon>NewFilterPage.xaml</DependentUpon>
+    <Compile Update="Views\EditFilterPage.xaml.cs">
+      <DependentUpon>EditFilterPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>

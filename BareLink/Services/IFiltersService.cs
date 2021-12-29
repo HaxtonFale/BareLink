@@ -12,5 +12,6 @@ namespace BareLink.Services
         Task<int> SaveFilterAsync(Filter filter);
         Task<int> ImportJsonAsync(string importJson);
         Task<string> ExportJsonAsync();
+        Task DeleteFilterAsync(Filter filter);
     }
 }

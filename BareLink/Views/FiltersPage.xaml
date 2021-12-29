@@ -4,11 +4,11 @@
              x:Class="BareLink.Views.FiltersPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:BareLink.ViewModels;assembly=BareLink"  
-             xmlns:model="clr-namespace:BareLink.Models;assembly=BareLink"  
+             xmlns:model="clr-namespace:BareLink.Models;assembly=BareLink"
              x:Name="BrowseFiltersPage">
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Add" Command="{Binding AddFilterCommand}" x:DataType="local:FiltersViewModel" />
+    <ToolbarItem IconImageSource="outline_add_24.xml" Command="{Binding AddFilterCommand}" x:DataType="local:FiltersViewModel" />
   </ContentPage.ToolbarItems>
   <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -20,33 +20,45 @@
                 SelectionMode="None">
       <CollectionView.ItemTemplate>
         <DataTemplate>
-          <StackLayout Padding="10" x:DataType="model:Filter">
-            <Label Text="{Binding Name}" 
-                   LineBreakMode="NoWrap" 
-                   TextColor="{DynamicResource PrimaryColor}"
-                   FontSize="16" />
-            <Label Text="{Binding Description}" 
-                   LineBreakMode="NoWrap"
-                   TextColor="{DynamicResource TertiaryColor}"
-                   FontSize="13" />
-            <Image Source="{Binding Active}">
-              <Image.Triggers>
-                <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="true">
-                  <Setter Property="Source" Value="outline_check_circle_24.xml"></Setter>
-                </DataTrigger>
-                <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="false">
-                  <Setter Property="Source" Value="outline_unpublished_24.xml"></Setter>
-                </DataTrigger>
-              </Image.Triggers>
-            </Image>
-            <StackLayout.GestureRecognizers>
+          <FlexLayout Direction="Column" Padding="10" x:DataType="model:Filter">
+            <Grid HorizontalOptions="StartAndExpand">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="40" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+              </Grid.RowDefinitions>
+              <Label Text="{Binding Name}" 
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     TextColor="{DynamicResource PrimaryColor}"
+                     FontSize="16" />
+              <Label Text="{Binding Description}" 
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     TextColor="{DynamicResource TertiaryColor}"
+                     FontSize="13" />
+              <Image Source="{Binding Active}" FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+                <Image.Triggers>
+                  <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="true">
+                    <Setter Property="Source" Value="outline_check_circle_24.xml"></Setter>
+                  </DataTrigger>
+                  <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="false">
+                    <Setter Property="Source" Value="outline_unpublished_24.xml"></Setter>
+                  </DataTrigger>
+                </Image.Triggers>
+              </Image>
+            </Grid>
+            <FlexLayout.GestureRecognizers>
               <TapGestureRecognizer 
                 NumberOfTapsRequired="1"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:FiltersViewModel}}, Path=FilterTapped}"		
                 CommandParameter="{Binding .}">
               </TapGestureRecognizer>
-            </StackLayout.GestureRecognizers>
-          </StackLayout>
+            </FlexLayout.GestureRecognizers>
+          </FlexLayout>
         </DataTemplate>
       </CollectionView.ItemTemplate>
     </CollectionView>

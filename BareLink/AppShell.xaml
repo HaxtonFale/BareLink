@@ -31,7 +31,7 @@
 
   <TabBar>
     <ShellContent Title="About" Icon="outline_info_24.xml" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    <ShellContent Title="Browse" Icon="outline_view_list_24.xml" ContentTemplate="{DataTemplate local:FiltersPage}" />
+    <ShellContent Title="Filters" Icon="outline_view_list_24.xml" ContentTemplate="{DataTemplate local:FiltersPage}" />
     <ShellContent Title="Settings" Icon="outline_settings_24.xml" ContentTemplate="{DataTemplate local:FiltersPage}" />
   </TabBar>
 

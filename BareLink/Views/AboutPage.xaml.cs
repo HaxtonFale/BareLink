@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace BareLink.Views
+﻿namespace BareLink.Views
 {
-    public partial class AboutPage : ContentPage
+    public partial class AboutPage
     {
         public AboutPage()
         {

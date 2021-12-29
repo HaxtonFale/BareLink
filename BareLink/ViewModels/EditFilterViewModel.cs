@@ -1,15 +1,20 @@
-﻿using BareLink.Models;
+﻿using System;
+using System.Diagnostics;
+using BareLink.Models;
 using Xamarin.Forms;
 
 namespace BareLink.ViewModels
 {
-    public class NewFilterViewModel : BaseViewModel
+    [QueryProperty(nameof(FilterId), nameof(FilterId))]
+    public class EditFilterViewModel : BaseViewModel
     {
         private string _name;
         private string _description;
         private string _pattern;
+        private bool _active = true;
+        private int _filterId;
 
-        public NewFilterViewModel()
+        public EditFilterViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
@@ -40,6 +45,31 @@ namespace BareLink.ViewModels
             get => _pattern;
             set => SetProperty(ref _pattern, value);
         }
+        public int FilterId
+        {
+            get => _filterId;
+            set
+            {
+                _filterId = value;
+                LoadFilterId(value);
+            }
+        }
+        public async void LoadFilterId(int filterId)
+        {
+            try
+            {
+                var filter = await FiltersService.GetFilterAsync(filterId);
+                FilterId = filter.Id;
+                Name = filter.Name;
+                Description = filter.Description;
+                Pattern = filter.Pattern;
+                _active = filter.Active;
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to Load Filter");
+            }
+        }
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
@@ -52,15 +82,16 @@ namespace BareLink.ViewModels
 
         private async void OnSave()
         {
-            var newFilter = new Filter
+            var filter = new Filter
             {
+                Id = _filterId,
                 Name = Name,
                 Description = Description,
                 Pattern = Pattern,
-                Active = true
+                Active = _active
             };
 
-            await FiltersService.SaveFilterAsync(newFilter);
+            await FiltersService.SaveFilterAsync(filter);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");

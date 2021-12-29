@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using BareLink.Models;
+using BareLink.Views;
 using Xamarin.Forms;
 
 namespace BareLink.ViewModels
@@ -8,12 +9,22 @@ namespace BareLink.ViewModels
     [QueryProperty(nameof(FilterId), nameof(FilterId))]
     public class FilterDetailViewModel : BaseViewModel
     {
+        private readonly FilterDetailPage _filterDetailPage;
         private int _filterId;
         private string _name;
         private string _description;
         private string _pattern;
         private bool _active;
-        public int Id { get; set; }
+
+        public Command EditFilterCommand { get; }
+        public Command DeleteFilterCommand { get; }
+
+        public FilterDetailViewModel(FilterDetailPage filterDetailPage)
+        {
+            _filterDetailPage = filterDetailPage;
+            EditFilterCommand = new Command(ExecuteEditFilterCommand);
+            DeleteFilterCommand = new Command(ExecuteDeleteFilterCommand);
+        }
 
         public string Name
         {
@@ -53,7 +64,6 @@ namespace BareLink.ViewModels
             try
             {
                 var filter = await FiltersService.GetFilterAsync(filterId);
-                Id = filter.Id;
                 Name = filter.Name;
                 Description = filter.Description;
                 Pattern = filter.Pattern;
@@ -65,23 +75,41 @@ namespace BareLink.ViewModels
             }
         }
 
+        private Filter Filter => new Filter
+        {
+            Id = FilterId,
+            Name = Name,
+            Description = Description,
+            Pattern = Pattern,
+            Active = Active
+        };
+
         private async void UpdateFilter()
         {
             try
             {
-                var filter = new Filter
-                {
-                    Id = Id,
-                    Name = Name,
-                    Description = Description,
-                    Pattern = Pattern,
-                    Active = Active
-                };
-                await FiltersService.SaveFilterAsync(filter);
+                await FiltersService.SaveFilterAsync(Filter);
             }
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Save Filter");
+            }
+        }
+
+        private async void ExecuteEditFilterCommand()
+        {
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(EditFilterPage)}?{nameof(EditFilterViewModel.FilterId)}={_filterId}");
+        }
+
+        private async void ExecuteDeleteFilterCommand()
+        {
+            var response =
+                await _filterDetailPage.DisplayAlert("Are you sure?", "This process cannot be reversed", "Yes", "No");
+            if (response)
+            {
+                await FiltersService.DeleteFilterAsync(Filter);
+                await Shell.Current.GoToAsync("..");
             }
         }
     }

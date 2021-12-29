@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace BareLink
 {
-    public partial class App : Application
+    public partial class App
     {
 
         public App()

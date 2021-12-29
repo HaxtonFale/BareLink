@@ -34,6 +34,8 @@ namespace BareLink.Services
 
         public Task<int> SaveFilterAsync(Filter filter) => filter.Id == 0 ? DatabaseConnection.InsertAsync(filter) : DatabaseConnection.UpdateAsync(filter);
 
+        public Task DeleteFilterAsync(Filter filter) => DatabaseConnection.Table<Filter>().DeleteAsync(f => f.Id == filter.Id);
+
         public Task<int> ImportJsonAsync(string importJson)
         {
             var import = JsonConvert.DeserializeObject<Filter[]>(importJson);
