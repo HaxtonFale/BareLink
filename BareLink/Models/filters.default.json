@@ -1,9 +1,7 @@
 ﻿[
   {
-    "Id": 1,
     "Name": "Twitter",
     "Description": "Default Twitter filter",
-    "Pattern": "https://(mobile\\.)?twitter\\.com/\\w+/status/\\d+",
-    "Enabled": true
+    "Pattern": "https://(mobile\\.)?twitter\\.com/\\w+/status/\\d+"
   }
 ]

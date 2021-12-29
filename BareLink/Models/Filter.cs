@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using SQLite;
 
 namespace BareLink.Models
@@ -7,6 +8,7 @@ namespace BareLink.Models
     {
         private Regex _regex;
 
+        [JsonIgnore]
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }

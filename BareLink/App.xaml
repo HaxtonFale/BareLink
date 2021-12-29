@@ -6,30 +6,27 @@
         Define global resources and styles here, that apply to all pages in your app.
     -->
   <Application.Resources>
+    <ResourceDictionary Source="Themes/DarkTheme.xaml" />
     <ResourceDictionary>
-      <Color x:Key="Primary">#2196F3</Color>
-      <Color x:Key="TextColor">Black</Color>
-      <Color x:Key="AppPrimaryColor">#2196F3</Color>
-      <Color x:Key="AppBackgroundColor">AliceBlue</Color>
-      <Color x:Key="PrimaryColor">Black</Color>
-      <Color x:Key="SecondaryColor">White</Color>
-      <Color x:Key="TertiaryColor">Silver</Color>
       <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor" Value="Black" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource AppBackgroundColor}" />
+      </Style>
+      <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}"></Setter>
       </Style>
       <Style TargetType="Button">
-        <Setter Property="TextColor" Value="White"></Setter>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}"></Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">
           <VisualStateGroupList>
             <VisualStateGroup x:Name="CommonStates">
               <VisualState x:Name="Normal">
                 <VisualState.Setters>
-                  <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                  <Setter Property="BackgroundColor" Value="{DynamicResource AppPrimaryColor}" />
                 </VisualState.Setters>
               </VisualState>
               <VisualState x:Name="Disabled">
                 <VisualState.Setters>
-                  <Setter Property="BackgroundColor" Value="#332196F3" />
+                  <Setter Property="BackgroundColor" Value="{DynamicResource TertiaryColor}" />
                 </VisualState.Setters>
               </VisualState>
             </VisualStateGroup>

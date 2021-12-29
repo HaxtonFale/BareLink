@@ -21,14 +21,14 @@ namespace BareLink.ViewModels
         {
             Title = "Browse";
             Filters = new ObservableCollection<Filter>();
-            LoadFiltersCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadFiltersCommand = new Command(ExecuteLoadItemsCommand);
 
             FilterTapped = new Command<Filter>(OnItemSelected);
 
             AddFilterCommand = new Command(OnAddItem);
         }
 
-        private async Task ExecuteLoadItemsCommand()
+        private async void ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
@@ -72,7 +72,7 @@ namespace BareLink.ViewModels
             await Shell.Current.GoToAsync(nameof(NewFilterPage));
         }
 
-        async void OnItemSelected(Filter item)
+        private async void OnItemSelected(Filter item)
         {
             if (item == null)
                 return;

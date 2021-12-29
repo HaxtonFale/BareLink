@@ -20,13 +20,13 @@ namespace BareLink.Droid
             _filtersService = DependencyService.Get<IFiltersService>();
         }
 
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            if (!(Intent is {Action: Intent.ActionSend})) return;
+            if (!(Intent is { Action: Intent.ActionSend })) return;
             var text = Intent.Extras?.GetString(Intent.ExtraText);
             if (text == null) return;
-            var filters = await _filtersService.GetActiveFiltersAsync();
+            var filters = _filtersService.GetActiveFiltersAsync().Result;
             foreach (var filter in filters)
             {
                 if (!filter.TryMatch(text, out var filteredResult)) continue;

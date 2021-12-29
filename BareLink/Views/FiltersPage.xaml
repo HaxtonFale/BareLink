@@ -23,11 +23,11 @@
           <StackLayout Padding="10" x:DataType="model:Filter">
             <Label Text="{Binding Name}" 
                    LineBreakMode="NoWrap" 
-                   Style="{DynamicResource ListItemTextStyle}" 
+                   TextColor="{DynamicResource PrimaryColor}"
                    FontSize="16" />
             <Label Text="{Binding Description}" 
                    LineBreakMode="NoWrap"
-                   Style="{DynamicResource ListItemDetailTextStyle}"
+                   TextColor="{DynamicResource TertiaryColor}"
                    FontSize="13" />
             <StackLayout.GestureRecognizers>
               <TapGestureRecognizer 

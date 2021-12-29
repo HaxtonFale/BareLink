@@ -34,24 +34,12 @@
           }
         ],
         "required": [
-          "Id",
           "Name",
-          "Pattern",
-          "Enabled"
+          "Pattern"
         ],
         "title": "The first anyOf schema",
         "type": "object",
         "properties": {
-          "Id": {
-            "$id": "#/items/anyOf/0/properties/Id",
-            "default": 0,
-            "description": "Database ID of the Filter.",
-            "examples": [
-              1
-            ],
-            "title": "Filter ID",
-            "type": "integer"
-          },
           "Name": {
             "$id": "#/items/anyOf/0/properties/Name",
             "default": "",
