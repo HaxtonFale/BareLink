@@ -14,6 +14,10 @@
       <Style TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource TextColor}"></Setter>
       </Style>
+      <Style TargetType="Switch">
+        <Setter Property="ThumbColor" Value="{DynamicResource AppPrimaryColor}"></Setter>
+        <Setter Property="OnColor" Value="{DynamicResource AppSecondaryColor}"></Setter>
+      </Style>
       <Style TargetType="Button">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}"></Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">

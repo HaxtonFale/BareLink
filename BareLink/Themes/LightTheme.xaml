@@ -4,6 +4,7 @@
                     x:Class="BareLink.Themes.LightTheme">
   <Color x:Key="TextColor">Black</Color>
   <Color x:Key="AppPrimaryColor">#631d82</Color>
+  <Color x:Key="AppSecondaryColor">#8827b2</Color>
   <Color x:Key="AppTitleColor">White</Color>
   <Color x:Key="AppBackgroundColor">AliceBlue</Color>
   <Color x:Key="PrimaryColor">Black</Color>

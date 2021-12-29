@@ -29,6 +29,16 @@
                    LineBreakMode="NoWrap"
                    TextColor="{DynamicResource TertiaryColor}"
                    FontSize="13" />
+            <Image Source="{Binding Active}">
+              <Image.Triggers>
+                <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="true">
+                  <Setter Property="Source" Value="outline_check_circle_24.xml"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="false">
+                  <Setter Property="Source" Value="outline_unpublished_24.xml"></Setter>
+                </DataTrigger>
+              </Image.Triggers>
+            </Image>
             <StackLayout.GestureRecognizers>
               <TapGestureRecognizer 
                 NumberOfTapsRequired="1"

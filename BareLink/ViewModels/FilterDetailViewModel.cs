@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using BareLink.Models;
 using Xamarin.Forms;
 
 namespace BareLink.ViewModels
@@ -11,6 +12,7 @@ namespace BareLink.ViewModels
         private string _name;
         private string _description;
         private string _pattern;
+        private bool _active;
         public int Id { get; set; }
 
         public string Name
@@ -31,16 +33,22 @@ namespace BareLink.ViewModels
             set => SetProperty(ref _pattern, value);
         }
 
+        public bool Active
+        {
+            get => _active;
+            set => SetProperty(ref _active, value, onChanged: UpdateFilter);
+        }
+
         public int FilterId
         {
             get => _filterId;
             set
             {
                 _filterId = value;
-                LoadItemId(value);
+                LoadFilterId(value);
             }
         }
-        public async void LoadItemId(int filterId)
+        public async void LoadFilterId(int filterId)
         {
             try
             {
@@ -49,10 +57,31 @@ namespace BareLink.ViewModels
                 Name = filter.Name;
                 Description = filter.Description;
                 Pattern = filter.Pattern;
+                Active = filter.Active;
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine("Failed to Load Filter");
+            }
+        }
+
+        private async void UpdateFilter()
+        {
+            try
+            {
+                var filter = new Filter
+                {
+                    Id = Id,
+                    Name = Name,
+                    Description = Description,
+                    Pattern = Pattern,
+                    Active = Active
+                };
+                await FiltersService.SaveFilterAsync(filter);
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to Save Filter");
             }
         }
     }

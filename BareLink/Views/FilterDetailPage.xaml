@@ -5,11 +5,9 @@
              x:Class="BareLink.Views.FilterDetailPage"
              Title="{Binding Name}">
   <StackLayout Spacing="20" Padding="15">
-    <Label Text="Name:" FontSize="Medium" />
-    <Label Text="{Binding Name}" FontSize="Small"/>
-    <Label Text="Description:" FontSize="Medium" />
-    <Label Text="{Binding Description}" FontSize="Small"/>
+    <Label Text="{Binding Description}" FontSize="Large"/>
     <Label Text="RegEx Pattern:" FontSize="Medium" />
-    <Label Text="{Binding Pattern}" FontSize="Small"/>
+    <Label Text="{Binding Pattern}" FontSize="Small" FontFamily="Monospace"/>
+    <Label Text="Enabled" /><Switch IsToggled="{Binding Active, Mode=TwoWay}" HorizontalOptions="Start" />
   </StackLayout>
 </ContentPage>
