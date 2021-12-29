@@ -16652,43 +16652,19 @@ namespace BareLink.Droid
 			public const int notify_panel_notification_icon_bg = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int outline_add_24 = 2131165324;
+			public const int preference_list_divider_material = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int outline_check_circle_24 = 2131165325;
+			public const int test_custom_background = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int outline_delete_24 = 2131165326;
+			public const int tooltip_frame_dark = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int outline_edit_24 = 2131165327;
+			public const int tooltip_frame_light = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int outline_info_24 = 2131165328;
-			
-			// aapt resource value: 0x7F070091
-			public const int outline_settings_24 = 2131165329;
-			
-			// aapt resource value: 0x7F070092
-			public const int outline_unpublished_24 = 2131165330;
-			
-			// aapt resource value: 0x7F070093
-			public const int outline_view_list_24 = 2131165331;
-			
-			// aapt resource value: 0x7F070094
-			public const int preference_list_divider_material = 2131165332;
-			
-			// aapt resource value: 0x7F070095
-			public const int test_custom_background = 2131165333;
-			
-			// aapt resource value: 0x7F070096
-			public const int tooltip_frame_dark = 2131165334;
-			
-			// aapt resource value: 0x7F070097
-			public const int tooltip_frame_light = 2131165335;
-			
-			// aapt resource value: 0x7F070098
-			public const int xamarin_logo = 2131165336;
+			public const int xamarin_logo = 2131165328;
 			
 			static Drawable()
 			{

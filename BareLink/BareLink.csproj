@@ -16,10 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\MaterialIconsOutlined-Regular.otf" />
     <None Remove="Models\filters.default.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Fonts\MaterialIconsOutlined-Regular.otf" />
     <EmbeddedResource Include="Models\filters.default.json" />
   </ItemGroup>
   <ItemGroup>
@@ -35,12 +37,6 @@
     </Compile>
     <Compile Update="AppShell.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="Themes\DarkTheme.xaml.cs">
-      <DependentUpon>DarkTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Themes\LightTheme.xaml.cs">
-      <DependentUpon>LightTheme.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\AboutPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
@@ -61,9 +57,6 @@
   <ItemGroup>
     <EmbeddedResource Update="App.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FilterDetailPage.xaml">

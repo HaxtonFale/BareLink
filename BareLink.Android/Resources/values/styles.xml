@@ -16,5 +16,6 @@
 		<!--<item name="colorAccent">#FF4081</item>-->
 		<item name="colorPrimary">#631d82</item>
 		<item name="colorPrimaryDark">#4e1666</item>
+		<item name="colorControlNormal">#4e1666</item>
 	</style>
 </resources>

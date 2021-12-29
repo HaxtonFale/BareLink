@@ -20,7 +20,7 @@
         <Setter Property="Shell.DisabledColor" Value="{StaticResource TertiaryColor}" />
         <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
         <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource AppPrimaryColor}" />
-        <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource SecondaryColor}"/>
+        <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark={StaticResource SecondaryColorDark}, Light={StaticResource SecondaryColorLight}}"/>
         <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TertiaryColor}"/>
         <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource AppTitleColor}"/>
       </Style>
@@ -30,9 +30,21 @@
   </Shell.Resources>
 
   <TabBar>
-    <ShellContent Title="About" Icon="outline_info_24.xml" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    <ShellContent Title="Filters" Icon="outline_view_list_24.xml" ContentTemplate="{DataTemplate local:FiltersPage}" />
-    <ShellContent Title="Settings" Icon="outline_settings_24.xml" ContentTemplate="{DataTemplate local:FiltersPage}" />
+    <ShellContent Title="About" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}">
+      <ShellContent.Icon>
+        <FontImageSource FontFamily="Material" Color="{StaticResource AppTitleColor}" Glyph="&#xe88e;" />
+      </ShellContent.Icon>
+    </ShellContent>
+    <ShellContent Title="Filters" ContentTemplate="{DataTemplate local:FiltersPage}">
+      <ShellContent.Icon>
+        <FontImageSource FontFamily="Material" Color="{StaticResource AppTitleColor}" Glyph="&#xe8ef;" />
+      </ShellContent.Icon>
+    </ShellContent>
+    <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:SettingsPage}">
+      <ShellContent.Icon>
+        <FontImageSource FontFamily="Material" Color="{StaticResource AppTitleColor}" Glyph="&#xe8b8;" />
+      </ShellContent.Icon>
+    </ShellContent>
   </TabBar>
 
   <!--

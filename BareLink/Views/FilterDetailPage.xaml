@@ -5,8 +5,16 @@
              x:Class="BareLink.Views.FilterDetailPage"
              Title="{Binding Name}">
   <ContentPage.ToolbarItems>
-    <ToolbarItem IconImageSource="outline_edit_24.xml" Command="{Binding EditFilterCommand}"/>
-    <ToolbarItem IconImageSource="outline_delete_24.xml" Command="{Binding DeleteFilterCommand}"/>
+    <ToolbarItem Command="{Binding EditFilterCommand}">
+      <ToolbarItem.IconImageSource>
+        <FontImageSource FontFamily="Material"  Glyph="&#xe3c9;" />
+      </ToolbarItem.IconImageSource>
+    </ToolbarItem>
+    <ToolbarItem Command="{Binding DeleteFilterCommand}">
+      <ToolbarItem.IconImageSource>
+        <FontImageSource FontFamily="Material" Glyph="&#xe872;" />
+      </ToolbarItem.IconImageSource>
+    </ToolbarItem>
   </ContentPage.ToolbarItems>
   <StackLayout Spacing="20" Padding="15">
     <Label Text="{Binding Description}" FontSize="Large"/>

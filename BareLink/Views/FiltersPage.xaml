@@ -8,7 +8,11 @@
              x:Name="BrowseFiltersPage">
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem IconImageSource="outline_add_24.xml" Command="{Binding AddFilterCommand}" x:DataType="local:FiltersViewModel" />
+    <ToolbarItem Command="{Binding AddFilterCommand}" x:DataType="local:FiltersViewModel">
+      <ToolbarItem.IconImageSource>
+        <FontImageSource FontFamily="Material" Glyph="&#xe145;" />
+      </ToolbarItem.IconImageSource>
+    </ToolbarItem>
   </ContentPage.ToolbarItems>
   <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -33,23 +37,22 @@
               <Label Text="{Binding Name}" 
                      Grid.Row="0"
                      Grid.Column="0"
-                     TextColor="{DynamicResource PrimaryColor}"
                      FontSize="16" />
               <Label Text="{Binding Description}" 
                      Grid.Row="1"
                      Grid.Column="0"
-                     TextColor="{DynamicResource TertiaryColor}"
+                     TextColor="{StaticResource TertiaryColor}"
                      FontSize="13" />
-              <Image Source="{Binding Active}" FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
-                <Image.Triggers>
-                  <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="true">
-                    <Setter Property="Source" Value="outline_check_circle_24.xml"></Setter>
+              <Label FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="50" FontFamily="Material">
+                <Label.Triggers>
+                  <DataTrigger TargetType="Label" Binding="{Binding Active}" Value="true">
+                    <Setter Property="Text" Value="&#xef4f;" />
                   </DataTrigger>
-                  <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="false">
-                    <Setter Property="Source" Value="outline_unpublished_24.xml"></Setter>
+                  <DataTrigger TargetType="Label" Binding="{Binding Active}" Value="false">
+                    <Setter Property="Text" Value="&#xeb32;" />
                   </DataTrigger>
-                </Image.Triggers>
-              </Image>
+                </Label.Triggers>
+              </Label>
             </Grid>
             <FlexLayout.GestureRecognizers>
               <TapGestureRecognizer 

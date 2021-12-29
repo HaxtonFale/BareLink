@@ -59,7 +59,6 @@ namespace BareLink.ViewModels
             try
             {
                 var filter = await FiltersService.GetFilterAsync(filterId);
-                FilterId = filter.Id;
                 Name = filter.Name;
                 Description = filter.Description;
                 Pattern = filter.Pattern;

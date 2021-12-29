@@ -6,31 +6,52 @@
         Define global resources and styles here, that apply to all pages in your app.
     -->
   <Application.Resources>
-    <ResourceDictionary Source="Themes/DarkTheme.xaml" />
     <ResourceDictionary>
+      <Color x:Key="AppPrimaryColor">#631d82</Color>
+      <Color x:Key="AppSecondaryColor">#752199</Color>
+      <Color x:Key="AppTitleColor">AliceBlue</Color>
+      <Color x:Key="TertiaryColor">Gray</Color>
+
+      <!-- Dark theme colours -->
+      <Color x:Key="PrimaryColorDark">AliceBlue</Color>
+      <Color x:Key="SecondaryColorDark">Black</Color>
+
+      <!-- Light theme colours -->
+      <Color x:Key="PrimaryColorLight">Black</Color>
+      <Color x:Key="SecondaryColorLight">AliceBlue</Color>
+
       <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor" Value="{DynamicResource AppBackgroundColor}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource SecondaryColorDark}, Light={StaticResource SecondaryColorLight}}" />
       </Style>
-      <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource TextColor}"></Setter>
+      <Style TargetType="Label" ApplyToDerivedTypes="True">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource PrimaryColorDark}, Light={StaticResource PrimaryColorLight}}" />
+      </Style>
+      <Style TargetType="Entry" ApplyToDerivedTypes="True">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource PrimaryColorDark}, Light={StaticResource PrimaryColorLight}}" />
+      </Style>
+      <Style TargetType="Editor">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource PrimaryColorDark}, Light={StaticResource PrimaryColorLight}}" />
       </Style>
       <Style TargetType="Switch">
-        <Setter Property="ThumbColor" Value="{DynamicResource AppPrimaryColor}"></Setter>
-        <Setter Property="OnColor" Value="{DynamicResource AppSecondaryColor}"></Setter>
+        <Setter Property="ThumbColor" Value="{StaticResource AppPrimaryColor}" />
+        <Setter Property="OnColor" Value="{StaticResource AppSecondaryColor}" />
+      </Style>
+      <Style TargetType="FontImageSource">
+        <Setter Property="Color" Value="{StaticResource AppTitleColor}" />
       </Style>
       <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource AppTitleColor}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
           <VisualStateGroupList>
             <VisualStateGroup x:Name="CommonStates">
               <VisualState x:Name="Normal">
                 <VisualState.Setters>
-                  <Setter Property="BackgroundColor" Value="{DynamicResource AppPrimaryColor}" />
+                  <Setter Property="BackgroundColor" Value="{StaticResource AppPrimaryColor}" />
                 </VisualState.Setters>
               </VisualState>
               <VisualState x:Name="Disabled">
                 <VisualState.Setters>
-                  <Setter Property="BackgroundColor" Value="{DynamicResource TertiaryColor}" />
+                  <Setter Property="BackgroundColor" Value="{StaticResource TertiaryColor}" />
                 </VisualState.Setters>
               </VisualState>
             </VisualStateGroup>

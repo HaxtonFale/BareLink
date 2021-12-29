@@ -10,9 +10,9 @@
   <ContentPage.Content>
     <StackLayout Spacing="3" Padding="15">
       <Label Text="Name" FontSize="Medium" />
-      <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
+      <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" Keyboard="Text" />
       <Label Text="Description" FontSize="Medium" />
-      <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+      <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" Keyboard="Text" />
       <Label Text="RegEx Pattern" FontSize="Medium" />
       <Editor Text="{Binding Pattern, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" FontFamily="monospace" />
       <StackLayout Orientation="Horizontal">
