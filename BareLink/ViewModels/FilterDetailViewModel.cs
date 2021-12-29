@@ -106,11 +106,9 @@ namespace BareLink.ViewModels
         {
             var response =
                 await _filterDetailPage.DisplayAlert("Are you sure?", "This process cannot be reversed", "Yes", "No");
-            if (response)
-            {
-                await FiltersService.DeleteFilterAsync(Filter);
-                await Shell.Current.GoToAsync("..");
-            }
+            if (!response) return;
+            await FiltersService.DeleteFilterAsync(Filter);
+            await Shell.Current.GoToAsync("..");
         }
     }
 }
