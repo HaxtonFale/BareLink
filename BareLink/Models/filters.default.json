@@ -1,7 +1,17 @@
 ﻿[
   {
     "Name": "Twitter",
-    "Description": "Default Twitter filter",
+    "Description": "Default Twitter filter. Removes everything after tweet (status) ID.",
     "Pattern": "https://(mobile\\.)?twitter\\.com/\\w+/status/\\d+"
+  },
+  {
+    "Name": "Amazon",
+    "Description": "Default Amazon filter. Removes everything after item identifier.",
+    "Pattern": "https://amazon\\.(co(m|\\.uk|\\.jp)|de|fr|ca)/(\\S+/)?/dp/[A-Z0-9]+/?"
+  },
+  {
+    "Name": "Danbooru",
+    "Description": "Default Danbooru filter. Removes tags after post ID.",
+    "Pattern": "https?://(dan|safe)booru.donmai.us/posts/\\d+"
   }
 ]

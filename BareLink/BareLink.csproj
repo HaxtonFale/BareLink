@@ -67,5 +67,5 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties models_4filters_1default_1json__JsonSchema="filters.schema.json" /></VisualStudio></ProjectExtensions>
 </Project>
