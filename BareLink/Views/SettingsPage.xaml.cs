@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using BareLink.ViewModels;
+using Xamarin.Forms.Xaml;
 
 namespace BareLink.Views
 {
@@ -8,6 +9,7 @@ namespace BareLink.Views
         public SettingsPage()
         {
             InitializeComponent();
+            BindingContext = new SettingsViewModel();
         }
     }
 }

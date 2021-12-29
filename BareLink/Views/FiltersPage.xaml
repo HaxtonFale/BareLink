@@ -37,11 +37,12 @@
               <Label Text="{Binding Name}" 
                      Grid.Row="0"
                      Grid.Column="0"
+                     Style="{DynamicResource ListItemTextStyle}"
                      FontSize="16" />
               <Label Text="{Binding Description}" 
                      Grid.Row="1"
                      Grid.Column="0"
-                     TextColor="{StaticResource TertiaryColor}"
+                     Style="{DynamicResource ListItemDetailTextStyle}"
                      FontSize="13" />
               <Label FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="50" FontFamily="Material">
                 <Label.Triggers>

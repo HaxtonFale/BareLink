@@ -17,9 +17,11 @@
     </ToolbarItem>
   </ContentPage.ToolbarItems>
   <StackLayout Spacing="20" Padding="15">
-    <Label Text="{Binding Description}" FontSize="Large"/>
-    <Label Text="RegEx pattern:" FontSize="Medium" />
-    <Label Text="{Binding Pattern}" FontSize="Small" FontFamily="monospace"/>
+    <Label Text="{Binding Description}" Style="{DynamicResource TitleStyle}"/>
+    <Label Text="RegEx pattern:" Style="{DynamicResource SubtitleStyle}"/>
+    <Frame BackgroundColor="{StaticResource TertiaryColor}" Padding="10">
+      <Label Text="{Binding Pattern}" Style="{DynamicResource ListItemDetailTextStyle}" FontFamily="monospace" TextColor="Black"/>
+    </Frame>
     <StackLayout Orientation="Horizontal">
       <Label Text="Enabled" FontSize="Medium" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
       <Switch IsToggled="{Binding Active, Mode=TwoWay}" HorizontalOptions="End" />

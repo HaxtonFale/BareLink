@@ -32,6 +32,9 @@
       <Style TargetType="Editor">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource PrimaryColorDark}, Light={StaticResource PrimaryColorLight}}" />
       </Style>
+      <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource PrimaryColorDark}, Light={StaticResource PrimaryColorLight}}" />
+      </Style>
       <Style TargetType="Switch">
         <Setter Property="ThumbColor" Value="{StaticResource AppPrimaryColor}" />
         <Setter Property="OnColor" Value="{StaticResource AppSecondaryColor}" />

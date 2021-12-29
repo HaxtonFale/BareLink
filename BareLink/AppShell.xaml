@@ -32,17 +32,17 @@
   <TabBar>
     <ShellContent Title="About" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}">
       <ShellContent.Icon>
-        <FontImageSource FontFamily="Material" Color="{StaticResource AppTitleColor}" Glyph="&#xe88e;" />
+        <FontImageSource FontFamily="Material" Glyph="&#xe88e;" />
       </ShellContent.Icon>
     </ShellContent>
     <ShellContent Title="Filters" ContentTemplate="{DataTemplate local:FiltersPage}">
       <ShellContent.Icon>
-        <FontImageSource FontFamily="Material" Color="{StaticResource AppTitleColor}" Glyph="&#xe8ef;" />
+        <FontImageSource FontFamily="Material" Glyph="&#xe8ef;" />
       </ShellContent.Icon>
     </ShellContent>
     <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:SettingsPage}">
       <ShellContent.Icon>
-        <FontImageSource FontFamily="Material" Color="{StaticResource AppTitleColor}" Glyph="&#xe8b8;" />
+        <FontImageSource FontFamily="Material" Glyph="&#xe8b8;" />
       </ShellContent.Icon>
     </ShellContent>
   </TabBar>

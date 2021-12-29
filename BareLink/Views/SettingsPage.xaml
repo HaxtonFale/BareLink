@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BareLink.Views.SettingsPage">
+             xmlns:viewModels="clr-namespace:BareLink.ViewModels;assembly=BareLink"
+             x:Class="BareLink.Views.SettingsPage" x:DataType="viewModels:SettingsViewModel"
+             Title="Settings">
   <ContentPage.Content>
-    <StackLayout>
-      <Picker x:Name="Picker" Title="Select Theme">
-        <Picker.ItemsSource>
-          <x:Array Type="{x:Type x:String}">
-            <x:String>Dark</x:String>
-            <x:String>Light</x:String>
-            <x:String>Device Default</x:String>
-          </x:Array>
-        </Picker.ItemsSource>
-      </Picker>
+    <StackLayout Padding="20">
+      <Label Style="{DynamicResource TitleStyle}" Text="Select App Theme" />
+      <Picker x:Name="Picker"
+              Title="Select Theme"
+              ItemsSource="{Binding Themes}"
+              ItemDisplayBinding="{Binding Name}"
+              SelectedItem="{Binding SelectedTheme}" />
+      <Button Text="Export Filters..." Command="{Binding ExportFiltersCommand}" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
