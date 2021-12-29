@@ -1,88 +1,42 @@
 ﻿{
-  "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "http://example.com/example.json",
+  "$schema": "http://json-schema.org/draft-06/schema#",
   "type": "array",
-  "title": "The root schema",
-  "description": "The root schema comprises the entire JSON document.",
-  "default": [],
-  "examples": [
-    [
-      {
-        "Id": 1,
-        "Name": "Twitter",
-        "Description": "Default Twitter filter",
-        "Pattern": "https://(mobile\\.)?twitter\\.com/\\w+/status/\\d+",
-        "Enabled": true
-      }
-    ]
-  ],
-  "additionalItems": true,
   "items": {
-    "$id": "#/items",
-    "anyOf": [
-      {
-        "$id": "#/items/anyOf/0",
-        "default": {},
-        "description": "An explanation about the purpose of this instance.",
-        "examples": [
-          {
-            "Id": 1,
-            "Name": "Twitter",
-            "Description": "Default Twitter filter",
-            "Pattern": "https://(mobile\\.)?twitter\\.com/\\w+/status/\\d+",
-            "Enabled": true
-          }
-        ],
-        "required": [
-          "Name",
-          "Pattern"
-        ],
-        "title": "The first anyOf schema",
-        "type": "object",
-        "properties": {
-          "Name": {
-            "$id": "#/items/anyOf/0/properties/Name",
-            "default": "",
-            "description": "Descriptive name for the filter.",
-            "examples": [
-              "Twitter"
-            ],
-            "title": "Filter Name",
-            "type": "string"
-          },
-          "Description": {
-            "$id": "#/items/anyOf/0/properties/Description",
-            "default": "",
-            "description": "A longer description for the filter's purpose.",
-            "examples": [
-              "Default Twitter filter"
-            ],
-            "title": "Filter Description",
-            "type": "string"
-          },
-          "Pattern": {
-            "$id": "#/items/anyOf/0/properties/Pattern",
-            "default": "",
-            "description": "A Regular Expression pattern to extract the URL from received text.",
-            "examples": [
-              "https://(mobile\\.)?twitter\\.com/\\w+/status/\\d+"
-            ],
-            "title": "Filter RegEx Pattern",
-            "type": "string"
-          },
-          "Enabled": {
-            "$id": "#/items/anyOf/0/properties/Enabled",
-            "default": false,
-            "description": "Indication whether the filter is actually active.",
-            "examples": [
-              true
-            ],
-            "title": "Enabled flag",
-            "type": "boolean"
-          }
+    "$ref": "#/definitions/Filter"
+  },
+  "definitions": {
+    "Filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string",
+          "title": "Filter Name",
+          "description": "Descriptive name for the filter."
         },
-        "additionalProperties": true
-      }
-    ]
+        "Description": {
+          "type": "string",
+          "title": "Filter Description",
+          "description": "A longer description for the filter's purpose.",
+          "maxLength": 250
+        },
+        "Pattern": {
+          "title": "Filter RegEx Pattern",
+          "description": "A Regular Expression pattern to extract the URL from received text.",
+          "type": "string"
+        },
+        "Enabled": {
+          "title": "Enabled flag",
+          "description": "Indication whether the filter is actually active.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Description",
+        "Name",
+        "Pattern"
+      ],
+      "title": "Filter"
+    }
   }
 }

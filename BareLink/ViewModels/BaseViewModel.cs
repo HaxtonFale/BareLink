@@ -9,7 +9,7 @@ namespace BareLink.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IFiltersService FiltersService => DependencyService.Get<IFiltersService>();
+        public IFiltersService FiltersService { get; } = DependencyService.Get<IFiltersService>();
 
         private bool _isBusy = false;
         public bool IsBusy

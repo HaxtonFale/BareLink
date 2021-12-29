@@ -9,7 +9,7 @@ namespace BareLink.Views
         public SettingsPage()
         {
             InitializeComponent();
-            BindingContext = new SettingsViewModel();
+            BindingContext = new SettingsViewModel(this);
         }
     }
 }
