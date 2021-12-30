@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BareLink.Views.FiltersPage"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:BareLink.ViewModels;assembly=BareLink"  
-             xmlns:model="clr-namespace:BareLink.Models;assembly=BareLink"
+             xmlns:local="clr-namespace:BareLink.ViewModels;assembly=BareLink"
              x:Name="BrowseFiltersPage">
 
   <ContentPage.ToolbarItems>
@@ -20,11 +19,11 @@
     -->
   <RefreshView x:DataType="local:FiltersViewModel" Command="{Binding LoadFiltersCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
     <CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Filters}"
-                SelectionMode="None">
+                    ItemsSource="{Binding Filters}"
+                    SelectionMode="None">
       <CollectionView.ItemTemplate>
         <DataTemplate>
-          <FlexLayout Direction="Column" Padding="10" x:DataType="model:Filter">
+          <FlexLayout Direction="Column" Padding="10" x:DataType="local:FilterViewModel">
             <Grid HorizontalOptions="StartAndExpand">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -44,23 +43,20 @@
                      Grid.Column="0"
                      Style="{DynamicResource ListItemDetailTextStyle}"
                      FontSize="13" />
-              <Label FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="50" FontFamily="Material">
-                <Label.Triggers>
-                  <DataTrigger TargetType="Label" Binding="{Binding Active}" Value="true">
-                    <Setter Property="Text" Value="&#xef4f;" />
-                  </DataTrigger>
-                  <DataTrigger TargetType="Label" Binding="{Binding Active}" Value="false">
-                    <Setter Property="Text" Value="&#xeb32;" />
-                  </DataTrigger>
-                </Label.Triggers>
+              <Label FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="50" FontFamily="Material" Text="{Binding ActiveGlyph}">
+                <Label.GestureRecognizers>
+                  <TapGestureRecognizer 
+                    NumberOfTapsRequired="1"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:FiltersViewModel}}, Path=FilterToggled}"
+                    CommandParameter="{Binding .}"/>
+                </Label.GestureRecognizers>
               </Label>
             </Grid>
             <FlexLayout.GestureRecognizers>
               <TapGestureRecognizer 
                 NumberOfTapsRequired="1"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:FiltersViewModel}}, Path=FilterTapped}"		
-                CommandParameter="{Binding .}">
-              </TapGestureRecognizer>
+                CommandParameter="{Binding .}"/>
             </FlexLayout.GestureRecognizers>
           </FlexLayout>
         </DataTemplate>
