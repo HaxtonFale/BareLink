@@ -12,7 +12,8 @@
         "Name": {
           "type": "string",
           "title": "Filter Name",
-          "description": "Descriptive name for the filter."
+          "description": "Descriptive name for the filter.",
+          "maxLength": 250
         },
         "Description": {
           "type": "string",

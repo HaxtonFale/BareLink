@@ -26,7 +26,7 @@ namespace BareLink.Droid
             if (!(Intent is { Action: Intent.ActionSend })) return;
             var text = Intent.Extras?.GetString(Intent.ExtraText);
             if (text == null) return;
-            var filters = _filtersService.GetActiveFiltersAsync().Result;
+            var filters = _filtersService.GetEnabledFiltersAsync().Result;
             foreach (var filter in filters)
             {
                 if (!filter.TryMatch(text, out var filteredResult)) continue;

@@ -1,24 +1,31 @@
 ﻿using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using SQLite;
+using NotNullAttribute = BareLink.Annotations.NotNullAttribute;
 
 namespace BareLink.Models
 {
     public class Filter
     {
-        private Regex _regex;
-
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Pattern { get; set; }
-        public bool Active { get; set; } = true;
 
-        public Regex Regex => _regex ??= new Regex(Pattern);
+        public string Pattern
+        {
+            get => Regex.ToString();
+            set => Regex = new Regex(value);
+        }
 
-        public bool TryMatch(string input, out string result)
+        public bool Enabled { get; set; } = true;
+
+        [JsonIgnore]
+        public Regex Regex { get; private set; }
+
+        public bool TryMatch([NotNull] string input, out string result)
         {
             result = null;
             var match = Regex.Match(input);

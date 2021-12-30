@@ -24,7 +24,7 @@
     </Frame>
     <StackLayout Orientation="Horizontal">
       <Label Text="Enabled" FontSize="Medium" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
-      <Switch IsToggled="{Binding Active, Mode=TwoWay}" HorizontalOptions="End" />
+      <Switch IsToggled="{Binding Enabled, Mode=TwoWay}" HorizontalOptions="End" />
     </StackLayout>
   </StackLayout>
 </ContentPage>

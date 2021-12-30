@@ -28,7 +28,7 @@ namespace BareLink.Services
 
         public Task<List<Filter>> GetFiltersAsync() => DatabaseConnection.Table<Filter>().ToListAsync();
 
-        public Task<List<Filter>> GetActiveFiltersAsync() => DatabaseConnection.Table<Filter>().Where(f => f.Active).ToListAsync();
+        public Task<List<Filter>> GetEnabledFiltersAsync() => DatabaseConnection.Table<Filter>().Where(f => f.Enabled).ToListAsync();
 
         public Task<Filter> GetFilterAsync(int filterId) => DatabaseConnection.Table<Filter>().FirstOrDefaultAsync(f => f.Id == filterId);
 
@@ -52,7 +52,7 @@ namespace BareLink.Services
         public async Task<string> ExportJsonAsync()
         {
             var filters = await GetFiltersAsync();
-            return JsonConvert.SerializeObject(filters);
+            return JsonConvert.SerializeObject(filters, Formatting.Indented);
         }
 
         private void Initialise()

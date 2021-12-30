@@ -14,5 +14,11 @@
     "Name": "Danbooru",
     "Description": "Default Danbooru filter. Removes tags after post ID.",
     "Pattern": "https?://(dan|safe)booru.donmai.us/posts/\\d+"
+  },
+  {
+    "Name": "Aggressive",
+    "Description": "Removes all GET parameters. Might break things: use with care. Off by default.",
+    "Pattern": "https?://[^?]+",
+    "Enabled": false
   }
 ]
