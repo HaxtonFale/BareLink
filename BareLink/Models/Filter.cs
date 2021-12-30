@@ -20,7 +20,7 @@ namespace BareLink.Models
             set => Regex = new Regex(value);
         }
 
-        public bool Active { get; set; } = true;
+        public bool Enabled { get; set; } = true;
 
         [JsonIgnore]
         public Regex Regex { get; private set; }

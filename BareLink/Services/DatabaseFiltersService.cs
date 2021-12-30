@@ -28,7 +28,7 @@ namespace BareLink.Services
 
         public Task<List<Filter>> GetFiltersAsync() => DatabaseConnection.Table<Filter>().ToListAsync();
 
-        public Task<List<Filter>> GetActiveFiltersAsync() => DatabaseConnection.Table<Filter>().Where(f => f.Active).ToListAsync();
+        public Task<List<Filter>> GetEnabledFiltersAsync() => DatabaseConnection.Table<Filter>().Where(f => f.Enabled).ToListAsync();
 
         public Task<Filter> GetFilterAsync(int filterId) => DatabaseConnection.Table<Filter>().FirstOrDefaultAsync(f => f.Id == filterId);
 

@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BareLink.Views.FiltersPage"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:BareLink.ViewModels;assembly=BareLink"
-             x:Name="BrowseFiltersPage">
+             x:DataType="local:FiltersViewModel"
+             xmlns:local="clr-namespace:BareLink.ViewModels;assembly=BareLink">
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Command="{Binding AddFilterCommand}" x:DataType="local:FiltersViewModel">
+    <ToolbarItem Command="{Binding AddFilterCommand}">
       <ToolbarItem.IconImageSource>
         <FontImageSource FontFamily="Material" Glyph="&#xe145;" />
       </ToolbarItem.IconImageSource>
@@ -17,20 +17,20 @@
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-  <RefreshView x:DataType="local:FiltersViewModel" Command="{Binding LoadFiltersCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+  <RefreshView Command="{Binding LoadFiltersCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
     <CollectionView x:Name="ItemsListView"
                     ItemsSource="{Binding Filters}"
                     SelectionMode="None">
       <CollectionView.ItemTemplate>
         <DataTemplate>
-          <FlexLayout Direction="Column" Padding="10" x:DataType="local:FilterViewModel">
-            <Grid HorizontalOptions="StartAndExpand">
+          <FlexLayout Direction="Column" Padding="0,5" x:DataType="local:FilterViewModel">
+            <Grid HorizontalOptions="StartAndExpand" BackgroundColor="#40631d82" Padding="10">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="40" />
               </Grid.ColumnDefinitions>
               <Grid.RowDefinitions>
-                <RowDefinition />
+                <RowDefinition Height="20"/>
                 <RowDefinition />
               </Grid.RowDefinitions>
               <Label Text="{Binding Name}" 
@@ -43,7 +43,7 @@
                      Grid.Column="0"
                      Style="{DynamicResource ListItemDetailTextStyle}"
                      FontSize="13" />
-              <Label FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="50" FontFamily="Material" Text="{Binding ActiveGlyph}">
+              <Label FlexLayout.AlignSelf="End" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="50" FontFamily="Material" Text="{Binding EnabledGlyph}">
                 <Label.GestureRecognizers>
                   <TapGestureRecognizer 
                     NumberOfTapsRequired="1"

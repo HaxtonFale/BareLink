@@ -14,7 +14,7 @@ namespace BareLink.ViewModels
         private string _name;
         private string _description;
         private string _pattern;
-        private bool _active;
+        private bool _enabled;
 
         public Command EditFilterCommand { get; }
         public Command DeleteFilterCommand { get; }
@@ -44,10 +44,10 @@ namespace BareLink.ViewModels
             set => SetProperty(ref _pattern, value);
         }
 
-        public bool Active
+        public bool Enabled
         {
-            get => _active;
-            set => SetProperty(ref _active, value, onChanged: UpdateFilter);
+            get => _enabled;
+            set => SetProperty(ref _enabled, value, onChanged: UpdateFilter);
         }
 
         public int FilterId
@@ -67,7 +67,7 @@ namespace BareLink.ViewModels
                 Name = filter.Name;
                 Description = filter.Description;
                 Pattern = filter.Pattern;
-                Active = filter.Active;
+                Enabled = filter.Enabled;
                 Title = "Details: " + Name;
             }
             catch (Exception)
@@ -82,7 +82,7 @@ namespace BareLink.ViewModels
             Name = Name,
             Description = Description,
             Pattern = Pattern,
-            Active = Active
+            Enabled = Enabled
         };
 
         private async void UpdateFilter()

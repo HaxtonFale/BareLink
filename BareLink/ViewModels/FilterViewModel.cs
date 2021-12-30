@@ -18,7 +18,7 @@ namespace BareLink.ViewModels
 
         public string Description => _filter.Description;
 
-        public string ActiveGlyph => _filter.Active ? "\uef4f" : "\ueb32";
+        public string EnabledGlyph => _filter.Enabled ? "\uef4f" : "\ueb32";
 
         public async Task<int> SaveAsync()
         {
@@ -27,8 +27,8 @@ namespace BareLink.ViewModels
 
         public void Toggle()
         {
-            _filter.Active = !_filter.Active;
-            OnPropertyChanged(nameof(ActiveGlyph));
+            _filter.Enabled = !_filter.Enabled;
+            OnPropertyChanged(nameof(EnabledGlyph));
         }
     }
 }
