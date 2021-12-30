@@ -37,3 +37,11 @@ jobs:
         reporter: dotnet-trx
         name: Unit Tests
         path: 'TestResults/*.trx'
+
+    - name: Build APK
+      run: msbuild ./BareLink.Android/BareLink.Android.csproj /p:Configuration=Release /t:PackageAndroid
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        path: ./BareLink.Android/bin/Release/org.haxtonfale.barelink.apk
