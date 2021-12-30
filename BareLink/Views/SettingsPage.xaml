@@ -13,6 +13,7 @@
               ItemDisplayBinding="{Binding Name}"
               SelectedItem="{Binding SelectedTheme}" />
       <Button Text="Export Filters..." Command="{Binding ExportFiltersCommand}" />
+      <Button Text="Import Filters..." Command="{Binding ImportFiltersCommand}" />
 
       <Button Text="Reset Filters to default" Command="{Binding ReseedDatabaseCommand}" Margin="0,30,0,0"/>
     </StackLayout>

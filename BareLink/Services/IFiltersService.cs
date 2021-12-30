@@ -7,7 +7,7 @@ namespace BareLink.Services
     public interface IFiltersService
     {
         Task<List<Filter>> GetFiltersAsync();
-        Task<List<Filter>> GetActiveFiltersAsync();
+        Task<List<Filter>> GetEnabledFiltersAsync();
         Task<Filter> GetFilterAsync(int filterId);
         Task<int> SaveFilterAsync(Filter filter);
         Task<int> ImportJsonAsync(string importJson);

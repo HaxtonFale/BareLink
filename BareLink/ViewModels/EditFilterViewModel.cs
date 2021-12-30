@@ -63,7 +63,7 @@ namespace BareLink.ViewModels
                 Name = filter.Name;
                 Description = filter.Description;
                 Pattern = filter.Pattern;
-                _active = filter.Active;
+                _active = filter.Enabled;
                 Title = "Edit: " + Name;
             }
             catch (Exception)
@@ -89,7 +89,7 @@ namespace BareLink.ViewModels
                 Name = Name,
                 Description = Description,
                 Pattern = Pattern,
-                Active = _active
+                Enabled = _active
             };
 
             await FiltersService.SaveFilterAsync(filter);
