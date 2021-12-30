@@ -16,6 +16,7 @@ namespace BareLink.Models
         public string Pattern { get; set; }
         public bool Active { get; set; } = true;
 
+        [JsonIgnore]
         public Regex Regex => _regex ??= new Regex(Pattern);
 
         public bool TryMatch(string input, out string result)

@@ -52,7 +52,7 @@ namespace BareLink.Services
         public async Task<string> ExportJsonAsync()
         {
             var filters = await GetFiltersAsync();
-            return JsonConvert.SerializeObject(filters);
+            return JsonConvert.SerializeObject(filters, Formatting.Indented);
         }
 
         private void Initialise()
