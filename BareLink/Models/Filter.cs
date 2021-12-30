@@ -23,6 +23,7 @@ namespace BareLink.Models
         public bool Enabled { get; set; } = true;
 
         [JsonIgnore]
+        [Ignore]
         public Regex Regex { get; private set; }
 
         public bool TryMatch([NotNull] string input, out string result)
